@@ -17,8 +17,8 @@ jobs:
             - name: "Logs in docker"
               uses: docker/login-action@3
               with:
-                  username: ${{ secret.DOCKERHUB_USERNAME }}
-                  password: ${{ secret.DOCKERHUB_PASSWORD }}
+                  username: ${{ secrets.DOCKERHUB_USERNAME }}
+                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
             - name: "Build our code"
               env:
                 IMAGE_NAME: github_actions201
