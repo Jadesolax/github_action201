@@ -1,0 +1,32 @@
+name: Deployment Workflow
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    preparation:
+        runs-on: ubuntu-latest
+        steps:
+            - name: preparation
+              run: echo "preparing to deploy.."
+
+            - name: checks out the repository
+              uses: actions/checkout@v4
+
+            - name: "Logs in docker"
+              uses: docker/login-action@3
+              with:
+                  username: ${{ secret.DOCKERHUB_USERNAME }}
+                  password: ${{ secret.DOCKERHUB_PASSWORD }}
+            - name: "Build our code"
+              env:
+                IMAGE_NAME: github_actions201
+                VERSION: latest
+                USERNAME: jadesolax
+
+              run: 
+
+                  docker build -t $USERNAME/$IMAGE_NAME:$VERSION .
+                  docker push $USERNAME/$IMAGE_NAME:$VERSION
+
