@@ -17,15 +17,15 @@ jobs:
             - name: "Logs in docker"
               uses: docker/login-action@v3
               with:
-                  username: ${{ secrets.DOCKERHUB_USERNAME }}
-                  password: ${{ secrets.DOCKERHUB_PASSWORD }}
+                  username: ${{ secrets.DOCKERHUB_USERNAME  }}
+                  password: ${{ secrets.DOCKERHUB_PASSWORD  }}
             - name: "Build our code"
               env:
                 IMAGE_NAME: github_actions201
                 VERSION: latest
-                USERNAME: Jadesolax
+                USERNAME: jadesolax
 
-              run: 
+              run: |
 
                   docker build -t $USERNAME/$IMAGE_NAME:$VERSION .
                   docker push $USERNAME/$IMAGE_NAME:$VERSION
