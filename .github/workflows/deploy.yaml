@@ -23,7 +23,7 @@ jobs:
               env:
                 IMAGE_NAME: github_actions201
                 VERSION: latest
-                USERNAME: jadesolax
+                USERNAME: Jadesolax
 
               run: 
 
